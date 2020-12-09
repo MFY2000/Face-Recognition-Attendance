@@ -3,5 +3,5 @@ module FaceRecognition.Attendance {
     requires javafx.controls;
     requires javafx.fxml;
 
-    opens sample;
+    opens FRA;
 }
