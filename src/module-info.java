@@ -4,5 +4,5 @@ module FaceRecognition.Attendance {
     requires javafx.fxml;
     requires java.sql;
 
-    opens sample;
+    opens FRA;
 }
