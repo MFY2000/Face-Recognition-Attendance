@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -9,11 +9,6 @@
 <AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="499.0" prefWidth="637.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FRA.AdvanceSearch">
    <children>
       <TextField fx:id="searchEngine" layoutX="457.0" layoutY="8.0" prefHeight="27.0" prefWidth="163.0" promptText="Search for Value" />
-      <RadioButton fx:id="sortSno" layoutX="27.0" layoutY="13.0" mnemonicParsing="false" text="sno" />
-       <RadioButton fx:id="sortName" layoutX="83.0" layoutY="15.0" mnemonicParsing="false" text="Name" />
-      <RadioButton fx:id="sortISBN" layoutX="157.0" layoutY="15.0" mnemonicParsing="false" text="ISBN" />
-       <RadioButton fx:id="sortAuther" layoutX="218.0" layoutY="15.0" mnemonicParsing="false" text="Auther" />
-      <RadioButton fx:id="sortDate" layoutX="290.0" layoutY="15.0" mnemonicParsing="false" text="Date" />
       <TableView fx:id="TableView" layoutY="43.0" prefHeight="457.0" prefWidth="637.0" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="43.0">
          <columns>
             <TableColumn fx:id="colSno" maxWidth="3000.0" minWidth="5.0" prefWidth="40.0" text="S.NO" />
@@ -27,5 +22,6 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
+      <ChoiceBox fx:id="sortingSelecter" layoutX="372.0" layoutY="9.0" prefHeight="25.0" prefWidth="74.0" />
    </children>
 </AnchorPane>

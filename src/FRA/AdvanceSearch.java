@@ -7,10 +7,7 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Window;
@@ -24,6 +21,7 @@ import java.util.logging.Logger;
 
 public class AdvanceSearch implements Initializable {
     ObservableList<Search> list = FXCollections.observableArrayList();
+    public ObservableList<String> choice = FXCollections.observableArrayList();
 
     public AnchorPane rootPane;
     public TextField searchEngine;
@@ -32,6 +30,7 @@ public class AdvanceSearch implements Initializable {
     public RadioButton sortISBN;
     public RadioButton sortAuther;
     public RadioButton sortDate;
+    public ChoiceBox<String> sortingSelecter;
     public javafx.scene.control.TableView<Search>TableView;
     public TableColumn<Search,String>colSno;
     public TableColumn<Search,String> colName;
@@ -45,6 +44,7 @@ public class AdvanceSearch implements Initializable {
         ValueinSertion();
         loadData();
         Advancesearch();
+        choiceBox();
     }
 
     private void ValueinSertion(){
@@ -119,6 +119,14 @@ public class AdvanceSearch implements Initializable {
         public SimpleBooleanProperty availiblityProperty() {
             return availiblity;
         }
+
+    }
+
+    private void choiceBox(){
+        choice.removeAll(choice);
+        String[] choices = {"sno","isbn","Name","Author","Date","Aviliblity"};
+        choice.addAll(choices[0],choices[1],choices[2],choices[3],choices[4],choices[5]);
+        sortingSelecter.getItems().addAll(choice);
     }
 
 
@@ -144,6 +152,7 @@ public class AdvanceSearch implements Initializable {
     }
 
 
+
     void Advancesearch(){
         // Wrap the ObservableList in a FilteredList (initially display all data).
         FilteredList<Search> filteredData = new FilteredList<>(list, b -> true);
@@ -155,24 +164,30 @@ public class AdvanceSearch implements Initializable {
                 // Compare first name and last name of every person with filter text.
                 String lowerCaseFilter = newValue.toLowerCase();
 
-                if(sortSno.isSelected()){
+                if(sortingSelecter.getValue() == null){
+                    return true;
+                } else if(sortingSelecter.getValue().equals(choice.get(0))){
                     if(search.getSno().toLowerCase().contains(lowerCaseFilter)){
                         return true;
                     }
-                }else if(sortISBN.isSelected()){
+                }else if(sortingSelecter.getValue().equals(choice.get(1))){
                     if(search.getIsbn().toLowerCase().contains(lowerCaseFilter)){
                         return true;
                     }
-                }else if(sortName.isSelected()){
+                }else if(sortingSelecter.getValue().equals(choice.get(2))){
                     if (search.getName().toLowerCase().contains(lowerCaseFilter)) {
                         return true; // Filter matches first name.
                     }
-                }else if(sortAuther.isSelected()){
+                }else if(sortingSelecter.getValue().equals(choice.get(3))){
                     if (search.getAuthor().contains(lowerCaseFilter)){
                         return true;
                     }
-                }else if(sortDate.isSelected()){
+                }else if(sortingSelecter.getValue().equals(choice.get(4))){
                      if(search.getDate().contains(lowerCaseFilter)){
+                        return true;
+                    }
+                }else if(sortingSelecter.getValue().equals(choice.get(5))){
+                    if(search.getAviliblity().toString().toLowerCase().contains(lowerCaseFilter)){
                         return true;
                     }
                 }
