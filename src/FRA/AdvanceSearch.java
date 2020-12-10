@@ -156,23 +156,23 @@ public class AdvanceSearch implements Initializable {
                 String lowerCaseFilter = newValue.toLowerCase();
 
                 if(sortSno.isSelected()){
-                    if(search.getSno().toLowerCase().indexOf(lowerCaseFilter)!=-1){
+                    if(search.getSno().toLowerCase().contains(lowerCaseFilter)){
                         return true;
                     }
                 }else if(sortISBN.isSelected()){
-                    if(search.getIsbn().toLowerCase().indexOf(lowerCaseFilter) != -1 ){
+                    if(search.getIsbn().toLowerCase().contains(lowerCaseFilter)){
                         return true;
                     }
                 }else if(sortName.isSelected()){
-                    if (search.getName().toLowerCase().indexOf(lowerCaseFilter) != -1 ) {
+                    if (search.getName().toLowerCase().contains(lowerCaseFilter)) {
                         return true; // Filter matches first name.
                     }
                 }else if(sortAuther.isSelected()){
-                    if (search.getAuthor().indexOf(lowerCaseFilter)!=-1){
+                    if (search.getAuthor().contains(lowerCaseFilter)){
                         return true;
                     }
                 }else if(sortDate.isSelected()){
-                     if(search.getDate().indexOf(lowerCaseFilter)!=-1){
+                     if(search.getDate().contains(lowerCaseFilter)){
                         return true;
                     }
                 }
