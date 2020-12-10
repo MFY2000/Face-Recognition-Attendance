@@ -19,28 +19,28 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        AnchorPane root = FXMLLoader.load(getClass().getResource("FXML/sample.fxml"));
-        primaryStage.initStyle(StageStyle.UNDECORATED);
+        AnchorPane root = FXMLLoader.load(getClass().getResource("FXML/AdvanceSearch.fxml"));
+//        primaryStage.initStyle(StageStyle.UNDECORATED);
         //for getting the screen size
-        Screen screen = Screen.getPrimary();
-        Rectangle2D bounds = screen.getVisualBounds();
+//        Screen screen = Screen.getPrimary();
+//        Rectangle2D bounds = screen.getVisualBounds();
 
-        primaryStage.setX(bounds.getMinX());//
-        primaryStage.setY(bounds.getMinY());
-        primaryStage.setWidth(bounds.getWidth());
-        primaryStage.setHeight(bounds.getHeight());//
-
-        KeyCombination keyCombinationWin1 = new KeyCodeCombination(KeyCode.TAB, KeyCombination.ALT_ANY);
-        KeyCombination keyCombinationWin2 = new KeyCodeCombination(KeyCode.WINDOWS, KeyCombination.ALT_ANY);
-
-//        root.addEventHandler
-        Scene scene = new  Scene(root);
-        scene.addEventHandler(KeyEvent.KEY_PRESSED, event -> {
-            if (keyCombinationWin1.match(event) || keyCombinationWin2.match(event) ||
-                    event.getCode() == KeyCode.WINDOWS || event.getCode() == KeyCode.ALT ) {
-
-            }
-        });
+//        primaryStage.setX(bounds.getMinX());//
+//        primaryStage.setY(bounds.getMinY());
+//        primaryStage.setWidth(bounds.getWidth());
+//        primaryStage.setHeight(bounds.getHeight());//
+//
+//        KeyCombination keyCombinationWin1 = new KeyCodeCombination(KeyCode.TAB, KeyCombination.ALT_ANY);
+//        KeyCombination keyCombinationWin2 = new KeyCodeCombination(KeyCode.WINDOWS, KeyCombination.ALT_ANY);
+//
+////        root.addEventHandler
+          Scene scene = new  Scene(root);
+//        scene.addEventHandler(KeyEvent.KEY_PRESSED, event -> {
+//            if (keyCombinationWin1.match(event) || keyCombinationWin2.match(event) ||
+//                    event.getCode() == KeyCode.WINDOWS || event.getCode() == KeyCode.ALT ) {
+//
+//            }
+//        });
         primaryStage.setScene(scene);
 
         primaryStage.show();
