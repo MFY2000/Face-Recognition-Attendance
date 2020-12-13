@@ -4,25 +4,32 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.paint.LinearGradient?>
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="345.0" fx:controller="sample.InputDetails" prefWidth="678.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="345.0" prefWidth="678.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.InputDetails">
    <children>
       <SplitPane dividerPositions="0.5" prefHeight="266.0" prefWidth="677.0">
          <items>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                <children>
-                  <ImageView fitHeight="264.0" fitWidth="340.0" pickOnBounds="true" preserveRatio="true" />
-                  <Button contentDisplay="CENTER" layoutX="278.0" layoutY="212.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="36.0" style="-fx-background-color: #9d9d9d; -fx-border-radius: 100%; -fx-background-radius: 100%;" text="Retake" textAlignment="CENTER" textFill="#ffffffab" underline="true" wrapText="true">
+                  <ImageView fitHeight="361.0" fitWidth="338.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Images/Temp.png" />
+                     </image></ImageView>
+                  <Button contentDisplay="CENTER" layoutX="278.0" layoutY="212.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="36.0" style="-fx-background-color: #9d9d9d; -fx-border-radius: 100%; -fx-background-radius: 100%;" textAlignment="CENTER" textFill="#ffffffab" underline="true" wrapText="true">
                      <font>
                         <Font name="Sporter" size="8.0" />
                      </font>
                      <graphic>
-                        <ImageView fitHeight="37.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fitHeight="37.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Images/Camera.png" />
+                           </image></ImageView>
                      </graphic>
                   </Button>
                </children>
@@ -42,38 +49,38 @@
                         </LinearGradient>
                      </textFill>
                   </Label>
-                  <Label layoutX="29.0" layoutY="85.0" text="FName">
+                  <Label layoutX="29.0" layoutY="85.0" text="FName" AnchorPane.leftAnchor="28.0">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
                   <TextField fx:id="fname" layoutX="98.0" layoutY="88.0" prefHeight="25.0" prefWidth="181.0" promptText="Enter First Name" />
                   <TextField fx:id="code" layoutX="97.0" layoutY="55.0" prefHeight="25.0" prefWidth="181.0" promptText="Unique Face code" />
-                  <Label layoutX="28.0" layoutY="52.0" text="Code:">
+                  <Label layoutX="28.0" layoutY="52.0" text="Code:" AnchorPane.leftAnchor="28.0">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <Label layoutX="24.0" layoutY="117.0" text="LName">
+                  <Label layoutX="24.0" layoutY="117.0" text="LName" AnchorPane.leftAnchor="28.0">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
                   <TextField fx:id="lname" layoutX="97.0" layoutY="120.0" prefHeight="25.0" prefWidth="181.0" promptText="Enter Last name" />
                   <TextField fx:id="sec" layoutX="96.0" layoutY="216.0" prefHeight="25.0" prefWidth="181.0" />
-                  <Label layoutX="23.0" layoutY="213.0" text="Section">
+                  <Label layoutX="23.0" layoutY="213.0" text="Section" AnchorPane.leftAnchor="28.0">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <Label layoutX="27.0" layoutY="148.0" text=" Reg .">
+                  <Label layoutX="27.0" layoutY="148.0" text=" Reg ." AnchorPane.leftAnchor="28.0">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
                   <TextField fx:id="reg" layoutX="96.0" layoutY="151.0" prefHeight="25.0" prefWidth="181.0" promptText="Reg.No" />
-                  <TextField fx:id="age" layoutX="97.0" layoutY="184.0" prefHeight="25.0" prefWidth="181.0" />
-                  <Label layoutX="28.0" layoutY="181.0" text="Age">
+                  <TextField fx:id="age" layoutX="97.0" layoutY="184.0" prefHeight="25.0" prefWidth="181.0" promptText="(18-60)" />
+                  <Label layoutX="28.0" layoutY="181.0" text="Age" AnchorPane.leftAnchor="28.0">
                      <font>
                         <Font size="20.0" />
                      </font>
