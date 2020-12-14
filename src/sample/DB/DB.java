@@ -50,24 +50,26 @@ public class DB{
         }
     }
 
-    public void ReturnImage(String id) throws SQLException, Exception {
+    public FileOutputStream ReturnImage(String id) throws SQLException, Exception {
         File file = new File("C:\\Users\\MF\\Desktop\\arrow.png\\");
         FileOutputStream fos = new FileOutputStream(file);
         byte b[];
         Blob blob;
 
-        PreparedStatement ps = connection.prepareStatement("select * from trn_imgs");
+        PreparedStatement ps = connection.prepareStatement("select * from trn_imgs WHERE img_id = 1");
         ResultSet rs=ps.executeQuery();
 
         while(rs.next()){
-            blob=rs.getBlob("img_data");
-            b=blob.getBytes(1,(int)blob.length());
-            fos.write(b);
+                blob=rs.getBlob("img_data");
+                b=blob.getBytes(1,(int)blob.length());
+                fos.write(b);
+
         }
 
-        ps.close();
-        fos.close();
-        connection.close();
+//        ps.close();
+//        fos.close();
+//        connection.close();
+        return fos;
     }
 
 
@@ -77,10 +79,10 @@ public class DB{
 
     }
 
-    public static void main(String[] args) throws Exception {
-        DB obj = new DB();
-        obj.ReturnImage("C:\\Users\\MF\\Desktop\\arrow.png");
-    }
+//    public static void main(String[] args) throws Exception {
+//        DB obj = new DB();
+//        obj.ReturnImage("C:\\Users\\MF\\Desktop\\arrow.png");
+//    }
 
 }
 
