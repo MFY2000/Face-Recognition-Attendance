@@ -1,36 +1,12 @@
 package sample.DB;
 
+import java.io.*;
 import java.sql.*;
 import java.util.*;
-
-abstract class varabile{
-    //Database varaible
-
-
-    //Database varaible that save data
-    public static String UserId;
-    public static String QuizSelete;
-    public static String QuizTime;
-    public static String QuizNoofAttemt;
-    public static String TotalQuizQuestion;
-    public static boolean QuizStart = false;
-    public ArrayList<String> QuestioAnswer = new ArrayList<String>();
-    public String Answer;
-
-}
-
-interface Method {
-    void insertRecord(String NoOfQuestionCorrect,String Percentage,String dateTime) throws SQLException;
-    boolean validate(String emailId, String password) throws SQLException;
-    ArrayList<String> displayFeildList();
-    String getOnlyAnswer(int QuestionId);
-    boolean checkPin(String pinEnter,String Feild);
-    void forgetPassword(String id,String Password);
-    boolean QuizAlreadyGiven() throws SQLException;
-    ArrayList<String> getQuizDetails(int QuestionId);
-
-}
-
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 public class DB{
     public Connection connection;
@@ -41,6 +17,7 @@ public class DB{
     private static final String DATABASE_URL = "jdbc:mysql://localhost/fraimage?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
     private static final String DATABASE_USERNAME = "root";
     private static final String DATABASE_PASSWORD = "";
+
 
     DB(){
         // load and register JDBC driver for MySQL
@@ -54,18 +31,83 @@ public class DB{
         }
     }
 
-    public void SaveImage(String name){
+    public void SaveImage(String name,String Adrress) {
+        try {
+            File image = new File(Adrress);
+            FileInputStream inputStream = new FileInputStream(image);
+            try (PreparedStatement preparedStatement = connection.prepareStatement("insert into trn_imgs(img_title, img_data) " + "values(?,?)")) {
+                preparedStatement.setString(1, name);
+                preparedStatement.setBinaryStream(2,inputStream, (int) (image.length()));
 
+                // Step 3: Execute the query or update query
+                preparedStatement.executeUpdate();
+            } catch (SQLException e) {
+                // print SQL exception information
+                System.out.println(e);
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
+    public void ReturnImage(String id) throws SQLException, Exception {
+        File file = new File("C:\\Users\\MF\\Desktop\\arrow.png\\");
+        FileOutputStream fos = new FileOutputStream(file);
+        byte b[];
+        Blob blob;
+
+        PreparedStatement ps = connection.prepareStatement("select * from trn_imgs");
+        ResultSet rs=ps.executeQuery();
+
+        while(rs.next()){
+            blob=rs.getBlob("img_data");
+            b=blob.getBytes(1,(int)blob.length());
+            fos.write(b);
+        }
+
+        ps.close();
+        fos.close();
+        connection.close();
+    }
+
+
     public void CreateDB_Image() throws SQLException {
-        String command  = "CREATE TABLE `` . `trn_imgs`(`img_id` int(10) unsigned NOT NULL auto_increment,`img_title` varchar(45) collate latin1_general_ci NOT NULL,`img_data` blob NOT NULL,PRIMARY KEY  (`img_id`)";
+        String command  = "CREATE TABLE `fraimage   ` . `trn_imgs`(`img_id` int(10) unsigned NOT NULL auto_increment,`img_title` varchar(45) collate latin1_general_ci NOT NULL,`img_data` blob NOT NULL,PRIMARY KEY  (`img_id`))";
         System.out.println(statement.executeQuery(command));
 
     }
 
+    public static void main(String[] args) throws Exception {
+        DB obj = new DB();
+        obj.ReturnImage("C:\\Users\\MF\\Desktop\\arrow.png");
+    }
+
 }
 
+
+//abstract class varabile{
+//    //Database varaible that save data
+//    public static String UserId;
+//    public static String QuizSelete;
+//    public static String QuizTime;
+//    public static String QuizNoofAttemt;
+//    public static String TotalQuizQuestion;
+//    public static boolean QuizStart = false;
+//    public ArrayList<String> QuestioAnswer = new ArrayList<String>();
+//    public String Answer;
+//}
+//
+//interface Method {
+//    void insertRecord(String NoOfQuestionCorrect,String Percentage,String dateTime) throws SQLException;
+//    boolean validate(String emailId, String password) throws SQLException;
+//    ArrayList<String> displayFeildList();
+//    String getOnlyAnswer(int QuestionId);
+//    boolean checkPin(String pinEnter,String Feild);
+//    void forgetPassword(String id,String Password);
+//    boolean QuizAlreadyGiven() throws SQLException;
+//    ArrayList<String> getQuizDetails(int QuestionId);
+//
+//}
 
 //    private static final String INSERT_QUERY = "INSERT INTO `resultofquiz` (`id`,`UserId`, `QuizName`, `TotalQuestion`, `NoOfQuestionCorrect`, `Percentage`, `Time`) VALUES (NULL,?,?, ?, ?, ?, ?)";
 //    private static final String SELECT_QUERY_LOGIN = "SELECT * FROM login WHERE email_id = ? and password = ?";
