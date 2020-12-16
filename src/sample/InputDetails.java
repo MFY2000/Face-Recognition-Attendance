@@ -1,7 +1,10 @@
 package sample;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -10,6 +13,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.InputMethodEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -19,7 +23,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 public class InputDetails {
-    public AnchorPane pdPane;
+    public AnchorPane Error;
     public TextField fname;
     public TextField code;
     public TextField lname;
@@ -56,8 +60,42 @@ public class InputDetails {
         Image image = new Image(stream);
         mainImage.setImage(image);
     }
+
+
+    public void validity(InputMethodEvent inputMethodEvent) {
+    }
+
+    void sendData(){
+
+    }
+
+    public void UploadData(ActionEvent actionEvent) {
+        if ((fname.getText()).length() != 0) {
+            if ((lname.getText()).length() != 0) {
+                if ((age.getText()).length() != 0) {
+                    if ((reg.getText()).length() != 0) {
+                        sendData();
+                    } else {
+                        Error.setDisable(false);
+                        Error.setOpacity(100);
+                        // label
+                    }
+                } else {
+                    Error.setDisable(false);
+                    Error.setOpacity(100);
+                    // label
+                }
+            } else {
+                Error.setDisable(false);
+                Error.setOpacity(100);
+                // label
+            }
+        } else {
+            Error.setDisable(false);
+            Error.setOpacity(100);
+            // label
+        }
+    }
 }
-
-
 
 

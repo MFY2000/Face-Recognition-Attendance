@@ -13,13 +13,13 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="414.0" prefWidth="678.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.InputDetails">
+<AnchorPane prefHeight="398.0" prefWidth="678.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.InputDetails">
    <children>
       <SplitPane dividerPositions="0.5" layoutX="1.0" layoutY="50.0" prefHeight="266.0" prefWidth="677.0">
          <items>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                <children>
-                  <ImageView fx:id="mainImage" fitHeight="361.0" fitWidth="338.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="mainImage" fitHeight="276.0" fitWidth="338.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true" />
                   <Button contentDisplay="CENTER" layoutX="278.0" layoutY="212.0" mnemonicParsing="false" onAction="#ToGo" prefHeight="36.0" prefWidth="36.0" style="-fx-background-color: #9d9d9d; -fx-border-radius: 100%; -fx-background-radius: 100%;" textAlignment="CENTER" textFill="#ffffffab" underline="true" wrapText="true">
                      <font>
                         <Font name="Sporter" size="8.0" />
@@ -48,60 +48,61 @@
                         </LinearGradient>
                      </textFill>
                   </Label>
-                  <Label layoutX="29.0" layoutY="85.0" text="FName" AnchorPane.leftAnchor="28.0">
+                  <Label layoutX="29.0" layoutY="85.0" text="FName" AnchorPane.leftAnchor="25.0">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="fname" layoutX="98.0" layoutY="88.0" prefHeight="25.0" prefWidth="181.0" promptText="Enter First Name" />
-                  <TextField fx:id="code" layoutX="97.0" layoutY="55.0" prefHeight="25.0" prefWidth="181.0" promptText="Unique Face code" />
-                  <Label layoutX="28.0" layoutY="52.0" text="Code:" AnchorPane.leftAnchor="28.0">
+                  <TextField fx:id="fname" layoutX="98.0" layoutY="88.0" prefHeight="25.0" prefWidth="181.0" promptText="Enter First Name" AnchorPane.leftAnchor="97.0" />
+                  <TextField fx:id="code" layoutX="97.0" layoutY="55.0" prefHeight="25.0" prefWidth="181.0" promptText="Unique Face code" AnchorPane.leftAnchor="97.0" />
+                  <Label layoutX="28.0" layoutY="52.0" text="Code:" AnchorPane.leftAnchor="25.0">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <Label layoutX="24.0" layoutY="117.0" text="LName" AnchorPane.leftAnchor="28.0">
+                  <Label layoutX="24.0" layoutY="117.0" text="LName" AnchorPane.leftAnchor="25.0">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="lname" layoutX="97.0" layoutY="120.0" prefHeight="25.0" prefWidth="181.0" promptText="Enter Last name" />
-                  <Label layoutX="23.0" layoutY="213.0" text="Section" AnchorPane.leftAnchor="28.0">
+                  <TextField fx:id="lname" layoutX="97.0" layoutY="120.0" prefHeight="25.0" prefWidth="181.0" promptText="Enter Last name" AnchorPane.leftAnchor="97.0" />
+                  <Label layoutX="23.0" layoutY="213.0" text="Section" AnchorPane.leftAnchor="25.0">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <Label layoutX="27.0" layoutY="148.0" text=" Reg ." AnchorPane.leftAnchor="28.0">
+                  <Label layoutX="27.0" layoutY="148.0" text="Reg ." AnchorPane.leftAnchor="25.0">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="reg" layoutX="96.0" layoutY="151.0" prefHeight="25.0" prefWidth="181.0" promptText="Reg.No" />
-                  <TextField fx:id="age" layoutX="97.0" layoutY="184.0" prefHeight="25.0" prefWidth="181.0" promptText="(18-60)" />
-                  <Label layoutX="28.0" layoutY="181.0" text="Age" AnchorPane.leftAnchor="28.0">
+                  <TextField fx:id="reg" layoutX="96.0" layoutY="151.0" prefHeight="25.0" prefWidth="181.0" promptText="Reg.No" AnchorPane.leftAnchor="97.0" />
+                  <TextField fx:id="age" layoutX="97.0" layoutY="184.0" onInputMethodTextChanged="#validity" prefHeight="25.0" prefWidth="181.0" promptText="(18-60)" AnchorPane.leftAnchor="97.0" />
+                  <Label layoutX="28.0" layoutY="181.0" text="Age" AnchorPane.leftAnchor="25.0">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
                   <ImageView fx:id="motionView" fitHeight="211.0" fitWidth="298.0" layoutX="2.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true" visible="false" />
-                  <ComboBox fx:id="Section" layoutX="96.0" layoutY="216.0" prefHeight="25.0" prefWidth="181.0" />
+                  <ComboBox fx:id="Section" editable="true" layoutX="96.0" layoutY="216.0" prefHeight="25.0" prefWidth="181.0" AnchorPane.leftAnchor="97.0" />
                </children>
             </AnchorPane>
          </items>
       </SplitPane>
       <ButtonBar layoutX="459.0" layoutY="335.0" prefHeight="40.0" prefWidth="200.0">
          <buttons>
-            <Button mnemonicParsing="false" style="-fx-background-color: green;" text="Uplaod" textFill="WHITE">
+            <Button mnemonicParsing="false" onAction="#ToGo" style="-fx-background-color: Red;" text="Cancel" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" style="-fx-background-color: Red;" text="Reject" textFill="WHITE">
+            <Button mnemonicParsing="false" onAction="#UploadData" style="-fx-background-color: green;" text="Uplaod" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Button>
          </buttons>
       </ButtonBar>
+      <AnchorPane fx:id="Error" disable="true" layoutX="-4.0" layoutY="329.0" opacity="0.0" prefHeight="52.0" prefWidth="230.0" style="-fx-background-color: #ff5858;" />
    </children>
 </AnchorPane>
