@@ -22,6 +22,6 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <ChoiceBox fx:id="sortingSelecter" layoutX="20.0" layoutY="9.0" prefHeight="25.0" prefWidth="74.0" />
+      <ChoiceBox fx:id="sortingSelecter" layoutX="372.0" layoutY="9.0" prefHeight="25.0" prefWidth="74.0" />
    </children>
 </AnchorPane>
