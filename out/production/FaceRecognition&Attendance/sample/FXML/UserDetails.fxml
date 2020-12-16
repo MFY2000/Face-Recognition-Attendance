@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
@@ -18,11 +19,8 @@
          <items>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                <children>
-                  <ImageView fitHeight="361.0" fitWidth="338.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../Images/Temp.png" />
-                     </image></ImageView>
-                  <Button contentDisplay="CENTER" layoutX="278.0" layoutY="212.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="36.0" style="-fx-background-color: #9d9d9d; -fx-border-radius: 100%; -fx-background-radius: 100%;" textAlignment="CENTER" textFill="#ffffffab" underline="true" wrapText="true">
+                  <ImageView fx:id="mainImage" fitHeight="361.0" fitWidth="338.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true" />
+                  <Button contentDisplay="CENTER" layoutX="278.0" layoutY="212.0" mnemonicParsing="false" onAction="#ToGo" prefHeight="36.0" prefWidth="36.0" style="-fx-background-color: #9d9d9d; -fx-border-radius: 100%; -fx-background-radius: 100%;" textAlignment="CENTER" textFill="#ffffffab" underline="true" wrapText="true">
                      <font>
                         <Font name="Sporter" size="8.0" />
                      </font>
@@ -68,7 +66,6 @@
                      </font>
                   </Label>
                   <TextField fx:id="lname" layoutX="97.0" layoutY="120.0" prefHeight="25.0" prefWidth="181.0" promptText="Enter Last name" />
-                  <TextField fx:id="sec" layoutX="96.0" layoutY="216.0" prefHeight="25.0" prefWidth="181.0" />
                   <Label layoutX="23.0" layoutY="213.0" text="Section" AnchorPane.leftAnchor="28.0">
                      <font>
                         <Font size="20.0" />
@@ -87,6 +84,7 @@
                      </font>
                   </Label>
                   <ImageView fx:id="motionView" fitHeight="211.0" fitWidth="298.0" layoutX="2.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true" visible="false" />
+                  <ComboBox fx:id="Section" layoutX="96.0" layoutY="216.0" prefHeight="25.0" prefWidth="181.0" />
                </children>
             </AnchorPane>
          </items>

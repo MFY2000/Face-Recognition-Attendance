@@ -1,25 +1,21 @@
 package sample;
 
-        import javafx.beans.InvalidationListener;
-        import javafx.beans.property.BooleanProperty;
-        import javafx.beans.property.SimpleBooleanProperty;
-        import javafx.beans.value.ChangeListener;
-        import javafx.beans.value.ObservableValue;
-        import javafx.event.ActionEvent;
-        import javafx.fxml.FXML;
-        import javafx.fxml.FXMLLoader;
-        import javafx.scene.Node;
-        import javafx.scene.Parent;
-        import javafx.scene.Scene;
-        import javafx.scene.control.*;
-        import javafx.scene.control.Button;
-        import javafx.scene.control.Label;
-        import javafx.scene.control.TextField;
-        import javafx.scene.input.KeyCode;
-        import javafx.scene.input.KeyEvent;
-        import javafx.scene.layout.AnchorPane;
-        import javafx.stage.Stage;
-        import java.io.IOException;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import javafx.stage.Stage;
+import java.io.IOException;
 
 
 
@@ -35,6 +31,8 @@ public class CameraInput {
     public Button minimize;
     public Hyperlink web;
     public boolean win = false;
+    UserDetails u = new UserDetails();
+    UserHolder holder = UserHolder.getInstance();
 
 
 
@@ -189,6 +187,9 @@ public class CameraInput {
     //end//
 
     public void ToGo(ActionEvent actionEvent) throws IOException {
+        u.setAddress("C:\\Users\\MF\\IdeaProjects\\FaceRecognition&Attendance\\src\\sample\\Images\\Temp.png");
+        holder.setUser(u);
+
         Parent Home = FXMLLoader.load(getClass().getResource("FXML/UserDetails.fxml"));
         Scene HomeScene = new Scene(Home);
         Stage Window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
