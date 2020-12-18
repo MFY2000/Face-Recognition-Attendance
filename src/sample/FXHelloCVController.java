@@ -22,16 +22,16 @@ public class FXHelloCVController{
     private ScheduledExecutorService timer;
     private VideoCapture capture = new VideoCapture();
     private boolean cameraActive = false;
-    private static int cameraId = 0;
+    private static int cameraId = 1;
 
 
     @FXML
     protected void startCamera(ActionEvent event) {
         if (!this.cameraActive) {
-           this.capture.open(cameraId);
-
+            capture.open(cameraId);
             if (this.capture.isOpened()) {
                 this.cameraActive = true;
+
                 Runnable frameGrabber = new Runnable() {
                     @Override public void run() {
                         Mat frame = grabFrame();
@@ -62,10 +62,8 @@ public class FXHelloCVController{
             try {
                 this.capture.read(frame);
 
-               if (!frame.empty()) {
+               if (!frame.empty())
                     Imgproc.cvtColor(frame, frame, Imgproc.COLOR_BGR2GRAY);
-                }
-
             }
             catch (Exception e) {
                  System.err.println("Exception during the image elaboration: " + e);
