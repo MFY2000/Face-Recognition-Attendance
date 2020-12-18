@@ -9,5 +9,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" name="javafx-swt" level="application" />
     <orderEntry type="library" exported="" name="mysql-connector-java-8.0.20" level="application" />
+    <orderEntry type="library" exported="" name="opencv-450" level="application" />
   </component>
 </module>

@@ -1,29 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.paint.LinearGradient?>
-<?import javafx.scene.paint.Stop?>
-<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
 
-<AnchorPane fx:controller="sample.CameraInput" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: red;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.FXHelloCVController">
    <children>
-      <AnchorPane prefHeight="400.0" prefWidth="266.0" style="-fx-background-color: #84ffc1;">
-         <children>
-            <Button layoutX="114.0" layoutY="310.0" mnemonicParsing="false" onAction="#ToGo" style="-fx-background-color: White;" text="Push">
-               <textFill>
-                  <LinearGradient endX="1.0" endY="1.0">
-                     <stops>
-                        <Stop color="#85ffc2" />
-                        <Stop color="#85ffc2" offset="0.007662835249042145" />
-                        <Stop color="#ff0d0dc6" offset="0.7024923964134769" />
-                        <Stop color="#84ffc1" offset="1.0" />
-                     </stops>
-                  </LinearGradient>
-               </textFill>
-            </Button>
-         </children>
-      </AnchorPane>
-      <Circle fill="#d35fc299" layoutX="440.0" layoutY="193.0" radius="100.0" stroke="BLACK" strokeType="INSIDE" />
+      <ImageView fitHeight="400.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true" />
+      <Button fx:id="button" layoutX="250.0" layoutY="324.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="103.0" style="-fx-background-color: White;" onAction="#startCamera" text="Start Camera"/>
    </children>
 </AnchorPane>

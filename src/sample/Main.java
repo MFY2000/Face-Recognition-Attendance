@@ -1,26 +1,62 @@
 package sample;
 
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import javafx.stage.WindowEvent;
+import org.opencv.core.Core;
+
 public class Main extends Application {
     @Override
-    public void start(Stage primaryStage) throws Exception{
-        AnchorPane root = FXMLLoader.load(getClass().getResource("FXML/sample.fxml"));
-        primaryStage.initStyle(StageStyle.UNDECORATED);
-        Scene scene = new  Scene(root);
-        primaryStage.setScene(scene);
-        primaryStage.show();
+    public void start(Stage primaryStage) throws Exception {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML/sample.fxml"));
+                AnchorPane rootElement = (AnchorPane) loader.load();
+                Scene scene = new Scene(rootElement, 800, 600);
+//                scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+                primaryStage.setTitle("JavaFX meets OpenCV");
+                primaryStage.setScene(scene);
+                primaryStage.show();
 
+                FXHelloCVController controller = loader.getController();
+                primaryStage.setOnCloseRequest((new EventHandler<WindowEvent>() {
+                    public void handle(WindowEvent we) {
+                        controller.setClosed();
+                    }
+                }));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        public static void main (String[]args) throws Exception{
+            System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
+            launch(args);
+        }
     }
 
-    public static void main(String[] args) throws Exception {launch(args);}
-}
+
+
+//        AnchorPane root = FXMLLoader.load(getClass().getResource("FXML/sample.fxml"));
+//        primaryStage.initStyle(StageStyle.UNDECORATED);
+//        Scene scene = new  Scene(root);
+//        primaryStage.setScene(scene);
+//        primaryStage.show();
+//
+//    }
+//
+//    public static void main(String[] args) throws Exception {
+//        System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
+//        launch(args);
+//    }
+//}
 
 
 //import javafx.geometry.Rectangle2D;

@@ -12,9 +12,15 @@ import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
+import org.opencv.core.Core;
+import org.opencv.core.CvType;
+import org.opencv.core.Mat;
+import org.opencv.videoio.VideoCapture;
+
 import java.io.IOException;
 
 
@@ -31,14 +37,14 @@ public class CameraInput {
     public Button minimize;
     public Hyperlink web;
     public boolean win = false;
+    private Button button;
+    private ImageView currentFrame;
+
+
     UserDetails u = new UserDetails();
     UserHolder holder = UserHolder.getInstance();
+    private VideoCapture capture = new VideoCapture();
 
-
-
-
-    // TextFieldwork//
-    @FXML
     private void GetOnPassword(KeyEvent key1) {
         if (key1.getCode() == KeyCode.ENTER) {
             pass.requestFocus();
@@ -50,11 +56,8 @@ public class CameraInput {
             win = true;
         }
     }
-    //end//
-
 
     //RadioButton//
-
     public void ShowPass(ActionEvent actionEvent) {
 
 
@@ -104,11 +107,8 @@ public class CameraInput {
             }
         }
     }
-//end//
 
     //PasswordField//
-
-    @FXML
     private void LogIn(KeyEvent key2) {
         if (key2.getCode() == KeyCode.ENTER) {
             logged.requestFocus();
@@ -121,8 +121,6 @@ public class CameraInput {
             win = true;
         }
     }
-//end//
-
 
     //closeButton//
     public void CloseWindow(ActionEvent actionEvent) {
@@ -130,7 +128,6 @@ public class CameraInput {
         stage.close();
 
     }
-//
 
     //Full Screen button//
     public void FullScreen(ActionEvent actionEvent) {
@@ -151,15 +148,12 @@ public class CameraInput {
             win = true;
         }
     }
-//end//
-
 
     //MaximizeButton//
     public void MinimizeWindow(ActionEvent actionEvent) {
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         stage.setIconified(true);
     }
-    //end//
 
     //Hyperlink
     public void GetOnSignUp(ActionEvent actionEvent)  throws IOException{
@@ -177,14 +171,11 @@ public class CameraInput {
         Window.show();
 
     }
-    //end//
 
     //LogIn//
     public void LoggedIn(ActionEvent actionEvent) throws IOException {
 
     }
-
-    //end//
 
     public void ToGo(ActionEvent actionEvent) throws IOException {
         u.setAddress("C:\\Users\\MF\\IdeaProjects\\FaceRecognition&Attendance\\src\\sample\\Images\\Temp.png");
@@ -202,4 +193,14 @@ public class CameraInput {
 
         Window.show();
     }
-}
+    public void initialize() throws Exception {
+        System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
+        Mat mat = Mat.eye(3, 3, CvType.CV_8UC1);
+        System.out.println("mat = " + mat.dump());
+    }
+
+
+
+
+
+    }
