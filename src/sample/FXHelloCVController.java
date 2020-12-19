@@ -24,9 +24,11 @@ public class FXHelloCVController{
     private boolean cameraActive = false;
     private static int cameraId = 1;
 
+    public void initialize() throws Exception {
+        startCamera();
+    }
 
-    @FXML
-    protected void startCamera(ActionEvent event) {
+    @FXML protected void startCamera() {
         if (!this.cameraActive) {
             capture.open(cameraId);
             if (this.capture.isOpened()) {

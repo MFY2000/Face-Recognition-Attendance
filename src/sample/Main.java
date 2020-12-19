@@ -19,7 +19,7 @@ public class Main extends Application {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML/sample.fxml"));
                 AnchorPane rootElement = (AnchorPane) loader.load();
-                Scene scene = new Scene(rootElement, 800, 600);
+                Scene scene = new Scene(rootElement);
 //                scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
                 primaryStage.setTitle("JavaFX meets OpenCV");
                 primaryStage.setScene(scene);

@@ -7,6 +7,8 @@ module FaceRecognition.Attendance {
     requires opencv;
     requires javafx.swing;
 
+
+
     opens sample;
     opens FRA;
 }
