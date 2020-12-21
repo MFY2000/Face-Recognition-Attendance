@@ -155,29 +155,16 @@ public class FaceDetectionController {
 		
 		return frame;
 	}
-	
-	/**
-	 * Method for face detection and tracking
-	 * 
-	 * @param frame
-	 *            it looks for faces in this frame
-	 */
-	private void detectAndDisplay(Mat frame)
-	{
+
+	private void detectAndDisplay(Mat frame) {
 		MatOfRect faces = new MatOfRect();
 		Mat grayFrame = new Mat();
-		
-		// convert the frame in gray scale
 		Imgproc.cvtColor(frame, grayFrame, Imgproc.COLOR_BGR2GRAY);
-		// equalize the frame histogram to improve the result
 		Imgproc.equalizeHist(grayFrame, grayFrame);
-		
-		// compute minimum face size (20% of the frame height, in our case)
-		if (this.absoluteFaceSize == 0)
-		{
+
+		if (this.absoluteFaceSize == 0) {
 			int height = grayFrame.rows();
-			if (Math.round(height * 0.2f) > 0)
-			{
+			if (Math.round(height * 0.2f) > 0) {
 				this.absoluteFaceSize = Math.round(height * 0.2f);
 			}
 		}
@@ -195,47 +182,28 @@ public class FaceDetectionController {
 	
 
 	@FXML
-	protected void haarSelected(Event event)
-	{
-		// check whether the lpb checkbox is selected and deselect it
+	protected void haarSelected(Event event) {
 		if (this.lbpClassifier.isSelected())
 			this.lbpClassifier.setSelected(false);
-			
-		this.checkboxSelection("haarcascade_frontalface_alt.xml");
+
+		this.checkboxSelection("sample/library/haarcascades/haarcascade_frontalface_alt.xml");
 	}
-	
-	/**
-	 * The action triggered by selecting the LBP Classifier checkbox. It loads
-	 * the trained set to be used for frontal face detection.
-	 */
+
 	@FXML
-	protected void lbpSelected(Event event)
-	{
+	protected void lbpSelected(Event event) {
 		// check whether the haar checkbox is selected and deselect it
 		if (this.haarClassifier.isSelected())
 			this.haarClassifier.setSelected(false);
 			
-		this.checkboxSelection("resources/lbpcascades/lbpcascade_frontalface.xml");
+		this.checkboxSelection("sample/library/resource/lbpcascades/lbpcascade_frontalface.xml");
 	}
 	
-	/**
-	 * Method for loading a classifier trained set from disk
-	 * 
-	 * @param classifierPath
-	 *            the path on disk where a classifier trained set is located
-	 */
-	private void checkboxSelection(String classifierPath)
-	{
-		// load the classifier(s)
+
+	private void checkboxSelection(String classifierPath) {
 		this.faceCascade.load(classifierPath);
-		
-		// now the video capture can start
 		this.cameraButton.setDisable(false);
 	}
-	
-	/**
-	 * Stop the acquisition from the camera and release all the resources
-	 */
+
 	private void stopAcquisition() {
 		if (this.timer!=null && !this.timer.isShutdown()) {
 			try {

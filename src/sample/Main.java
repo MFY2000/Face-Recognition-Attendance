@@ -17,8 +17,8 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML/sample.fxml"));
-                AnchorPane rootElement = (AnchorPane) loader.load();
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("library/FaceDetection.fxml"));
+                BorderPane rootElement = (BorderPane) loader.load();
                 Scene scene = new Scene(rootElement);
 //                scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
                 primaryStage.setTitle("JavaFX meets OpenCV");
