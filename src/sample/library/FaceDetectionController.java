@@ -226,7 +226,7 @@ public class FaceDetectionController {
 	{
 		Untils.onFXThread(view.imageProperty(), image);
 	}
-	protected void setClosed()
+	public void setClosed()
 	{
 		this.stopAcquisition();
 	}

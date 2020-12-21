@@ -1,4 +1,4 @@
-package sample;
+package sample.Controller;
 
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
@@ -20,6 +20,8 @@ import org.opencv.core.Core;
 import org.opencv.core.CvType;
 import org.opencv.core.Mat;
 import org.opencv.videoio.VideoCapture;
+import sample.UserDetails;
+import sample.UserHolder;
 
 import java.io.IOException;
 

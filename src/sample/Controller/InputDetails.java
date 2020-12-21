@@ -1,4 +1,4 @@
-package sample;
+package sample.Controller;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -16,6 +16,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.InputMethodEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import sample.UserDetails;
+import sample.UserHolder;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
