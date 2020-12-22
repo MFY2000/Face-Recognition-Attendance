@@ -1,10 +1,6 @@
 package sample.Controller;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -20,7 +16,6 @@ import sample.UserDetails;
 import sample.UserHolder;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -35,7 +30,7 @@ public class InputDetails {
     public ImageView mainImage;
 
     public void ToGo(ActionEvent actionEvent) throws IOException {
-        Parent Home = FXMLLoader.load(getClass().getResource("FXML/sample.fxml"));
+        Parent Home = FXMLLoader.load(getClass().getResource("../sample.fxml"));
         Scene HomeScene = new Scene(Home);
         Stage Window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
 
