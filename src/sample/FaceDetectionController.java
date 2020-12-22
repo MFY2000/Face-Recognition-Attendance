@@ -49,7 +49,7 @@ public class FaceDetectionController {
 	/**
 	 * Init the controller, at start time
 	 */
-	protected void initialize(){
+	public void initialize() throws Exception {
 		this.capture = new VideoCapture();
 		this.faceCascade = new CascadeClassifier();
 		this.absoluteFaceSize = 0;
@@ -70,9 +70,12 @@ public class FaceDetectionController {
 			this.haarClassifier.setDisable(true);
 			this.lbpClassifier.setDisable(true);
 			
-			// start the video capture
-			this.capture.open(0);
-			
+			try {
+				this.capture.open(2);
+			}catch (Exception ex){
+				System.err.println("Impossible");
+			}
+
 			// is the video stream available?
 			if (this.capture.isOpened()) {
 				this.cameraActive = true;
@@ -171,7 +174,7 @@ public class FaceDetectionController {
 		// each rectangle in faces is a face: draw them!
 		Rect[] facesArray = faces.toArray();
 		for (int i = 0; i < facesArray.length; i++)
-			Imgproc.rectangle(frame, facesArray[i].tl(), facesArray[i].br(), new Scalar(0, 255, 0), 3);
+			Imgproc.rectangle(frame, facesArray[i].tl(), facesArray[i].br(), new Scalar(255, 0,255), 3);
 			
 	}
 	
@@ -186,7 +189,6 @@ public class FaceDetectionController {
 
 	@FXML
 	protected void lbpSelected(Event event) {
-		// check whether the haar checkbox is selected and deselect it
 		if (this.haarClassifier.isSelected())
 			this.haarClassifier.setSelected(false);
 			
@@ -195,8 +197,8 @@ public class FaceDetectionController {
 	
 
 	private void checkboxSelection(String classifierPath) {
+		this.faceCascade =  new CascadeClassifier(classifierPath);
 		System.out.println("hello");
-		this.faceCascade.load(classifierPath);
 		this.cameraButton.setDisable(false);
 	}
 
