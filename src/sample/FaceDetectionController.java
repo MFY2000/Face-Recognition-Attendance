@@ -1,4 +1,4 @@
-package sample.library;
+package sample;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -20,6 +20,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import sample.library.Untils;
 
 public class FaceDetectionController {
 	// FXML buttons
@@ -48,8 +49,7 @@ public class FaceDetectionController {
 	/**
 	 * Init the controller, at start time
 	 */
-	protected void init()
-	{
+	protected void initialize(){
 		this.capture = new VideoCapture();
 		this.faceCascade = new CascadeClassifier();
 		this.absoluteFaceSize = 0;
@@ -64,10 +64,8 @@ public class FaceDetectionController {
 	 * The action triggered by pushing the button on the GUI
 	 */
 	@FXML
-	protected void startCamera()
-	{	
-		if (!this.cameraActive)
-		{
+	protected void startCamera() {
+		if (!this.cameraActive) {
 			// disable setting checkboxes
 			this.haarClassifier.setDisable(true);
 			this.lbpClassifier.setDisable(true);
@@ -76,8 +74,7 @@ public class FaceDetectionController {
 			this.capture.open(0);
 			
 			// is the video stream available?
-			if (this.capture.isOpened())
-			{
+			if (this.capture.isOpened()) {
 				this.cameraActive = true;
 				
 				// grab a frame every 33 ms (30 frames/sec)
@@ -139,15 +136,13 @@ public class FaceDetectionController {
 				this.capture.read(frame);
 				
 				// if the frame is not empty, process it
-				if (!frame.empty())
-				{
+				if (!frame.empty()) {
 					// face detection
 					this.detectAndDisplay(frame);
 				}
 				
 			}
-			catch (Exception e)
-			{
+			catch (Exception e) {
 				// log the (full) error
 				System.err.println("Exception during the image elaboration: " + e);
 			}
@@ -186,7 +181,7 @@ public class FaceDetectionController {
 		if (this.lbpClassifier.isSelected())
 			this.lbpClassifier.setSelected(false);
 
-		this.checkboxSelection("sample/library/haarcascades/haarcascade_frontalface_alt.xml");
+		this.checkboxSelection("C:\\Users\\MF\\IdeaProjects\\FaceRecognition&Attendance\\src\\sample\\library\\resource\\haarcascades\\haarcascade_frontalface_alt.xml");
 	}
 
 	@FXML
@@ -195,11 +190,12 @@ public class FaceDetectionController {
 		if (this.haarClassifier.isSelected())
 			this.haarClassifier.setSelected(false);
 			
-		this.checkboxSelection("sample/library/resource/lbpcascades/lbpcascade_frontalface.xml");
+		this.checkboxSelection("C:\\Users\\MF\\IdeaProjects\\FaceRecognition&Attendance\\src\\sample\\library\\resource\\lbpcascades\\lbpcascade_frontalface.xml");
 	}
 	
 
 	private void checkboxSelection(String classifierPath) {
+		System.out.println("hello");
 		this.faceCascade.load(classifierPath);
 		this.cameraButton.setDisable(false);
 	}

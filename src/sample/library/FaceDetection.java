@@ -9,6 +9,7 @@ import javafx.stage.WindowEvent;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.fxml.FXMLLoader;
+import sample.FaceDetectionController;
 
 public class FaceDetection extends Application {
 	@Override
@@ -23,7 +24,7 @@ public class FaceDetection extends Application {
 			primaryStage.setScene(scene);
 			primaryStage.show();
 			FaceDetectionController controller = loader.getController();
-			controller.init();
+
 			
 			primaryStage.setOnCloseRequest((new EventHandler<WindowEvent>() {
 				public void handle(WindowEvent we)

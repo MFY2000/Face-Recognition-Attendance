@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.library.FaceDetectionController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.FaceDetectionController">
    <children>
       <ImageView fx:id="currentFrame" disable="true" fitHeight="400.0" fitWidth="600.0" opacity="0.0" pickOnBounds="true" preserveRatio="true" />
       <Button fx:id="button" disable="true" layoutX="250.0" layoutY="324.0" mnemonicParsing="false" onAction="#startCamera" opacity="0.0" prefHeight="49.0" prefWidth="103.0" style="-fx-background-color: White;" text="Start Camera" />

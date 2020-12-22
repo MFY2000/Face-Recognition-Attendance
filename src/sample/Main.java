@@ -10,7 +10,7 @@ import org.opencv.core.Core;
 public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource(""));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("sample.fxml"));
                 AnchorPane rootElement = (AnchorPane) loader.load();
                 Scene scene = new Scene(rootElement);
                 primaryStage.setTitle("JavaFX meets OpenCV");
