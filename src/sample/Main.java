@@ -57,7 +57,6 @@ public class Main extends Application {
 //            AnchorPane root = FXMLLoader.load(getClass().getResource("sample.fxml"));
 //            Scene scene = new Scene(root);
 //
-////            scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 ////            primaryStage.getIcons().add(new Image("logo.png"));
 ////            primaryStage.setTitle("e x o V i s i x | Smart & Intelligent Computer Vision Solution ");
 //

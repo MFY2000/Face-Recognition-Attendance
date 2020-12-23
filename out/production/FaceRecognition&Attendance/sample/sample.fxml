@@ -2,7 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -11,8 +11,6 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.FaceDetectionController">
    <children>
-      <ImageView fx:id="currentFrame" disable="true" fitHeight="400.0" fitWidth="600.0" opacity="0.0" pickOnBounds="true" preserveRatio="true" />
-      <Button fx:id="button" disable="true" layoutX="250.0" layoutY="324.0" mnemonicParsing="false" onAction="#startCamera" opacity="0.0" prefHeight="49.0" prefWidth="103.0" style="-fx-background-color: White;" text="Start Camera" />
       <HBox alignment="CENTER" layoutX="250.0" layoutY="324.0">
          <padding>
             <Insets bottom="25" left="25" right="25" top="25" />
@@ -31,15 +29,7 @@
       </VBox>
       <VBox layoutX="121.0" layoutY="14.0" prefHeight="25.0" prefWidth="386.0">
          <children>
-            <HBox alignment="CENTER" spacing="10">
-               <padding>
-                  <Insets bottom="10" top="10" />
-               </padding>
-               <children>
-                  <CheckBox fx:id="haarClassifier" onAction="#haarSelected" text="Haar Classifier" />
-                  <CheckBox fx:id="lbpClassifier" onAction="#lbpSelected" text="LBP Classifier" />
-               </children>
-            </HBox>
+            <Label prefHeight="28.0" prefWidth="390.0" text="Connecting ...." />
          </children>
       </VBox>
       <Separator layoutY="46.0" prefHeight="5.0" prefWidth="600.0" />
