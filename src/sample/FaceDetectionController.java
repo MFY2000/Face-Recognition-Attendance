@@ -1,29 +1,24 @@
 package sample;
 
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import org.opencv.core.*;
+import org.opencv.imgproc.Imgproc;
+import org.opencv.objdetect.CascadeClassifier;
+import org.opencv.objdetect.Objdetect;
+import org.opencv.videoio.VideoCapture;
+import sample.library.Untils;
+
 import java.util.Arrays;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-import org.opencv.core.Mat;
-import org.opencv.core.MatOfRect;
-import org.opencv.core.Rect;
-import org.opencv.core.Scalar;
-import org.opencv.core.Size;
-import org.opencv.imgproc.Imgproc;
-import org.opencv.objdetect.CascadeClassifier;
-import org.opencv.objdetect.Objdetect;
-import org.opencv.videoio.VideoCapture;
-
-import javafx.event.Event;
-import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import sample.library.Untils;
-
 public class FaceDetectionController {
+	public Label status;
 	// FXML buttons
 	@FXML
 	private Button cameraButton;
@@ -63,22 +58,16 @@ public class FaceDetectionController {
 			// is the video stream available?
 			if (this.capture.isOpened()) {
 				this.cameraActive = true;
-				
-				// grab a frame every 33 ms (30 frames/sec)
 				Runnable frameGrabber = new Runnable() {
-					
-					@Override
-					public void run() {
-						// effectively grab and process a single frame
+					@Override public void run() {
 						Mat frame = grabFrame();
-						// convert and show the frame
 						Image imageToShow = Untils.mat2Image(frame);
 						updateImageView(originalFrame, imageToShow);
 					}
 				};
 				
 				this.timer = Executors.newSingleThreadScheduledExecutor();
-				this.timer.scheduleAtFixedRate(frameGrabber, 0, 33, TimeUnit.MILLISECONDS);
+				this.timer.scheduleAtFixedRate(frameGrabber, 10, 35, TimeUnit.MILLISECONDS);
 				
 				// update the button content
 				this.cameraButton.setText("Stop Camera");
@@ -100,16 +89,11 @@ public class FaceDetectionController {
 	private Mat grabFrame() {
 		Mat frame = new Mat();
 		
-		// check if the capture is open
 		if (this.capture.isOpened()) {
 			try {
-				// read the current frame
 				this.capture.read(frame);
-				if (!frame.empty()) {
+				if (!frame.empty())
 					this.detectAndDisplay(frame);
-
-				}
-				
 			}
 			catch (Exception e) {
 				System.err.println("Exception during the image elaboration: " + e);
@@ -124,18 +108,19 @@ public class FaceDetectionController {
 	}
 
 
-	private void detectAndDisplay(Mat frame) {
+	private void detectAndDisplay(Mat frame) throws Exception {
 		MatOfRect faces = new MatOfRect();
 		Mat grayFrame = new Mat();
+
 		Imgproc.cvtColor(frame, grayFrame, Imgproc.COLOR_BGR2GRAY);
 		Imgproc.equalizeHist(grayFrame, grayFrame);
 
-		if (this.absoluteFaceSize == 0) {
-			int height = grayFrame.rows();
-			if (Math.round(height * 0.2f) > 0) {
+		int height;
+
+		if (this.absoluteFaceSize == 0)
+			if (Math.round((height = grayFrame.rows()) * 0.2f) > 0)
 				this.absoluteFaceSize = Math.round(height * 0.2f);
-			}
-		}
+
 
 		this.faceCascade.detectMultiScale(grayFrame, faces, 1.1, 2, 0 | Objdetect.CASCADE_SCALE_IMAGE, new Size(this.absoluteFaceSize, this.absoluteFaceSize), new Size());
 
@@ -143,8 +128,13 @@ public class FaceDetectionController {
 		System.out.println("Arrasy: "+ Arrays.toString(facesArray));
 		for (int i = 0; i < facesArray.length; i++)
 			Imgproc.rectangle(frame, facesArray[i].tl(), facesArray[i].br(), new Scalar(255, 0,255), 3);
+
 		if (facesArray.length != 0){
+			String temp = "Status: "+(new Compare_face()).compare_image();
+			status.setText(temp);
 			stopAcquisition();
+//			BufferedImage image_2 = ImageIO.read(new File());
+
 		}
 	}
 	

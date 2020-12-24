@@ -29,7 +29,7 @@
       </VBox>
       <VBox layoutX="121.0" layoutY="14.0" prefHeight="25.0" prefWidth="386.0">
          <children>
-            <Label prefHeight="28.0" prefWidth="390.0" text="Connecting ...." />
+            <Label fx:id="status" prefHeight="28.0" prefWidth="390.0" text="Connecting ...." />
          </children>
       </VBox>
       <Separator layoutY="46.0" prefHeight="5.0" prefWidth="600.0" />
